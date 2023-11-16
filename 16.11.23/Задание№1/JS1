@@ -1,0 +1,108 @@
+const textx = document.getElementById("textx")
+const chet = document.getElementById("chet")
+const cheto = document.getElementById("cheto")
+const random = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+//textx.textContent=random(1,10)
+/*massiv=[[],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[],
+        [],[],[],[],[],[],[],[],[],[]]*/
+/*massiv=[[]*90]
+c=0
+for (let y = 0; y <= 9; y++) {
+    for(let x = 0; x <= 9; x++){
+        massiv[c+x+y]=[y,x]
+        //console.log(c+x+y,[y,x])
+    }
+    c+=9
+}
+for (let x = 0; x < 100; x++){
+    massiv[x]=Math.floor(Math.random()*100)
+}
+c=""
+for (let x = 0; x < 100; x++){
+    if (x%10==0)
+    //{c+='\n'+String("["+massiv[x]+"],")}
+    //c+=' '+String("["+massiv[x]+"],")
+    {c+='\n'+String(massiv[x]+",")}
+    c+=' '+String(massiv[x]+",")
+}
+textx.textContent=c
+chet=0
+sumstrok=0
+d=0
+for (let x = 0; x < 100; x++){
+    if (massiv[x]%2==0){chet+=1}
+    if (x %10==9  && x>0){
+        console.log(massiv[x])
+        //for(let y=0;)
+    }
+    }*/
+chett=0
+sumstrok=0
+let mass=[[]*100]
+d=0
+for(let x=0;x<100;x++){
+    mass[x]=Math.floor(Math.random()*100)
+    if (mass[x]%2==0){chett+=1}
+    /*d+=mass[x]
+    if(x%10==q){
+        if(d>100){sumstrok+=1}
+        console.log(x,d)
+        d=0}*/
+}
+d=0
+for (let x=0;x<10;x++){
+    for(let y=0;y<10;y++){
+        d+=mass[x*10+y]
+        
+    }
+    if(d>100){sumstrok+=1}
+    console.log(d,x)
+    d=0
+}
+/*let massiv = mass.reduce((result, item) => {
+    return result.includes(item) ? result : [... result, item];
+}, []);*/
+massiv=mass
+
+c=""
+for (let x = 0; x < 100; x++){
+    if (massiv[x]<10){
+        if ((x+1)%10==0 && x>0){
+            c+=String(massiv[x])+"    \n\n  "
+        }
+        else{
+            c+=String(massiv[x])+'     '
+        }
+    }
+    else{
+        if ((x+1)%10==0 && x>0){
+            c+=String(massiv[x])+"   \n\n  "
+        }
+        else{
+            c+=String(massiv[x])+'    '
+        }
+    }
+    /*if (massiv[x]<10){
+        if (x%10==0 && x>0)
+            {c+='\n'+String(massiv[x])+" ,"}
+            else{
+            c+=String(massiv[x])+" , "}}
+    else{
+    if (x%10==0 && x>0)
+    {c+='\n'+String(massiv[x])+","}
+    else{
+    c+=' '+String(massiv[x])+","}}*/
+}
+textx.textContent='  '+c
+chet.textContent=chett
+cheto.textContent=sumstrok
