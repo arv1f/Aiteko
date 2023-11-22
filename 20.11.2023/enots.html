@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="7.css">
 </head>
 <body>
+    <h1 id="final"></h1>
     <div id="cont" class="container">
         <button id='b0'class="el el-1"></button>
         <button id='b1'class="el el-2"></button>
@@ -19,19 +20,26 @@
         <button id='b8'class="el el-9"></button>
      </div>
      <script>
-        enots=[0,0,0,0,0,0,0,0,0]
-        enots[Math.floor(Math.random()*9)]=1;
+        let lastfinal=0
+        let f=0
+        let enots=['buttonimggt','buttonimggt','buttonimggt','buttonimggt','buttonimggt','buttonimggt','buttonimggt','buttonimggt','buttonimggt']
+        enots[Math.floor(Math.random()*9)]='buttonimggf';
         let buttons = document.querySelectorAll('button');
         buttons.forEach((button) => {
         button.addEventListener('click', (event) => {
-            if(enots[Number(button.id[1])]==1){
-                event.target.className='buttonimggf';}
-            else{event.target.className='buttonimggt';
-        
-        }
-        });
-        });
-       </script>
+            event.target.className=enots[Number(button.id[1])]
+            if (enots[Number(button.id[1])]=='buttonimggf'){end(0)
+                for (let q=0;q<9;q++){d=document.getElementById(buttons[q].id);
+                    if (d.className!='buttonimggt'){d.className='buttonimggf'} } }
+            else{f+=1;
+                if (f==8){end(1)} }
+        end=function(winorlose) {
+            if (lastfinal==0){
+            document.getElementById('final').className='finall'
+            if (winorlose==1){document.getElementById('final').textContent='You win'}
+            else{document.getElementById('final').textContent='You lose'} } 
+            lastfinal=1}    });    });
+         </script>
 </body>
 
 </html>
