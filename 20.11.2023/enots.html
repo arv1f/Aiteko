@@ -30,7 +30,7 @@
             event.target.className=enots[Number(button.id[1])]
             if (enots[Number(button.id[1])]=='buttonimggf'){end(0)
                 for (let q=0;q<9;q++){d=document.getElementById(buttons[q].id);
-                    if (d.className!='buttonimggt'){d.className='buttonimggf'} } }
+                    if (d.className=='buttonimggt'){d.className='buttonimggf'} } }
             else{f+=1;
                 if (f==8){end(1)} }
         end=function(winorlose) {
