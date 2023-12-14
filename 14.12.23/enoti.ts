@@ -11,7 +11,46 @@ const enotWeight = document.getElementById("weight") as HTMLInputElement;
 const textdiv = document.getElementById("textdiv") as HTMLTextAreaElement;*/
 
 
+
+interface Enot {
+    name: string;
+    age?: number;
+    weight?: number;
+    photo?: string;
+}
+
+class EnotCache {
+    private storageKey: string;
+
+    constructor(storageKey: string) {
+        this.storageKey = storageKey;
+    }
+
+    // Сохранение данных в localStorage
+    saveData(data: Enot): void {
+        localStorage.setItem(this.storageKey, JSON.stringify(data));
+    }
+
+    // Получение данных из localStorage
+    getData(): Enot | null {
+        const data = localStorage.getItem(this.storageKey);
+        return data ? JSON.parse(data) : null;
+    }
+}
+
+// Использование
+const enotCache = new EnotCache('enotData');
+
+// Получение данных
+let divElement = <HTMLDivElement>document.getElementById('textdiv');
+enot=enotCache.getData();
+let TextEnot: string = 'Name: '+enot.name+'. Age: '+enot.age+'. Weight: '+enot.weight+'.';
+divElement.innerText = TextEnot;// Выводит кэш енота после перезагрузки страницы
+
+
 function displayInputText() {
+    let divElement = <HTMLDivElement>document.getElementById('textdiv');
+
     let inputElementName = <HTMLInputElement>document.getElementById('name');
     let inputElementAge = <HTMLInputElement>document.getElementById('age');
     let inputElementWeight = <HTMLInputElement>document.getElementById('weight');
@@ -19,17 +58,17 @@ function displayInputText() {
     const enot: Enot = {
         name: inputElementName.value,
     }
-
     if (inputElementAge.value){enot.age=Number(inputElementAge.value)}
     if (inputElementWeight.value){enot.weight=Number(inputElementWeight.value)}
 
+    enotCache.saveData({ name: enot.name, age: enot.age, weight: enot.weight });// Сохраняем данные о еноте в кэш
 
-    let divElement = <HTMLDivElement>document.getElementById('textdiv');
     let TextEnot: string = 'Name: '+enot.name+'. Age: '+enot.age+'. Weight: '+enot.weight+'.';
     //let TextEnot: string = 'Name: '+inputElementName.value+'. Age: '+inputElementAge.value+'. Weight: '+inputElementWeight.value+'.';
     divElement.innerText = TextEnot;
 
-    
+
+
     //Photo:
 
 
@@ -73,5 +112,15 @@ function displayInputText() {
 
 let buttonElement = <HTMLButtonElement>document.getElementById('mainButton');
 buttonElement.addEventListener('click', displayInputText);
+
+
+
+
+
+
+
+
+
+
 
 //npx tsc typescript-intro/src/enoti.ts
