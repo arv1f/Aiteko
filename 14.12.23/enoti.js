@@ -1,6 +1,3 @@
-
-// Файл .js только для того чтобы увидеть результат код см в .ts
-
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -37,12 +34,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-/*const myButton = document.getElementById("mainButton") as HTMLButtonElement;
-const enotName = document.getElementById("name") as HTMLInputElement;
-const enotAge = document.getElementById("age") as HTMLInputElement;
-const enotWeight = document.getElementById("weight") as HTMLInputElement;
-const textdiv = document.getElementById("textdiv") as HTMLTextAreaElement;*/
+var EnotCache = /** @class */ (function () {
+    function EnotCache(storageKey) {
+        this.storageKey = storageKey;
+    }
+    // Сохранение данных в localStorage
+    EnotCache.prototype.saveData = function (data) {
+        localStorage.setItem(this.storageKey, JSON.stringify(data));
+    };
+    // Получение данных из localStorage
+    EnotCache.prototype.getData = function () {
+        var data = localStorage.getItem(this.storageKey);
+        return data ? JSON.parse(data) : null;
+    };
+    return EnotCache;
+}());
+// Использование
+var enotCache = new EnotCache('enotData');
+// Получение данных
+// Выводит после перезагрузки страницы
+var divElement = document.getElementById('textdiv');
+enot = enotCache.getData();
+var TextEnot = 'Name: ' + enot.name + '. Age: ' + enot.age + '. Weight: ' + enot.weight + '.';
+divElement.innerText = TextEnot;
 function displayInputText() {
+    var divElement = document.getElementById('textdiv');
     var inputElementName = document.getElementById('name');
     var inputElementAge = document.getElementById('age');
     var inputElementWeight = document.getElementById('weight');
@@ -55,7 +71,7 @@ function displayInputText() {
     if (inputElementWeight.value) {
         enot.weight = Number(inputElementWeight.value);
     }
-    var divElement = document.getElementById('textdiv');
+    enotCache.saveData({ name: enot.name, age: enot.age, weight: enot.weight }); // Сохраняем данные о еноте в кэш
     var TextEnot = 'Name: ' + enot.name + '. Age: ' + enot.age + '. Weight: ' + enot.weight + '.';
     //let TextEnot: string = 'Name: '+inputElementName.value+'. Age: '+inputElementAge.value+'. Weight: '+inputElementWeight.value+'.';
     divElement.innerText = TextEnot;
