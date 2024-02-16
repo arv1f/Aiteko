@@ -1,0 +1,25 @@
+a {
+    text-decoration:none;
+    display: inline-block; 
+    line-height: 45px;
+    color: white;
+}
+a:after {
+    display: block;
+    content: "";
+    height: 3px;
+    width: 0%;
+    background-color: rgba(0,0,0, 0.6);
+    transition: width 0.4s ease-in-out;}
+a:hover:after,
+a:focus:after {
+    width: 100%;
+}
+a:hover{
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+    color:rgba(0,0,0, 0.6);
+}
+.buttona{
+    background-color: transparent;
+    border: none;
+}
