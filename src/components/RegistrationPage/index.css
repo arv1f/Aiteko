@@ -1,0 +1,74 @@
+.divBG{
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(blue, 0.5%, pink);
+}
+.Container{
+    display: grid;
+    text-align: center;
+    width: 500px;
+    height: 700px;
+    border: solid 3px white;
+    border-radius: 20px;
+    position: absolute;
+    top:10%;
+    left: 38%;
+    box-shadow: 30px 30px 50px rgb(155, 109, 169);
+    vertical-align: middle;
+}
+input{
+    width: 400px;
+    height: 45px;
+    background: rgb(155, 109, 169);
+    border: solid 1px white;
+    border-radius: 10px;
+    font-size: 35px;
+    text-align: center;
+}
+form{
+    font-size: 35px;
+}
+.welcome{
+    width: 400px;
+    height: 45px;
+    background: rgb(155, 109, 169);
+    border: solid 1px white;
+    border-radius: 10px;
+    font-size: 35px;
+    margin-left: 50px;
+    cursor:pointer;
+}
+.nonBorder{
+    border: none;
+    background-color: transparent;
+    top:68%;
+    left: 45.5%;
+    position: absolute;
+    cursor:pointer;
+    font-size: 17px;
+}
+a {
+    text-decoration:none;
+    display: inline-block; 
+    line-height: 45px;
+    color: white;
+}
+a:after {
+    display: block;
+    content: "";
+    height: 3px;
+    width: 0%;
+    background-color: rgba(0,0,0, 0.6);
+    transition: width 0.4s ease-in-out;}
+a:hover:after,
+a:focus:after {
+    width: 100%;
+}
+a:hover{
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+    color:rgba(0,0,0);
+}
